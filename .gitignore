@@ -1,0 +1,39 @@
+# Python 관련
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+
+# 가상환경 관련
+venv/
+env/
+*.env
+
+# IDE 관련
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# Django 관련
+*.log
+db.sqlite3
+/media/
+staticfiles/
+static/
+local_settings.py
+
+# 배포 관련
+*.pem
+*.key
+*.crt
+*.conf
+
+# 기타
+*.DS_Store
+*.dump
+*.~lock.*
