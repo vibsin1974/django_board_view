@@ -1,0 +1,15 @@
+{% extends 'board/base.html' %}
+{% block title %}글{{label}}{% endblock title %}
+{% block content %}
+    <form method ="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type="submit" value=글{{label}}>
+    </form>
+{% endblock content %}
+
+
+
+

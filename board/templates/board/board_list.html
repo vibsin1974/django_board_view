@@ -1,0 +1,31 @@
+{% extends 'board/base.html' %}
+{% block title %}글목록{% endblock title %}
+{% block content %}
+{% if object_list %}
+    <table border="1">
+        <tr>
+            <th>글번호</th>
+            <th>제목</th>
+            <th>글쓴이</th>
+            <th>내용</th>
+            <th>파일명</th>
+            <th>등록일자</th>
+            <th>조회수</th>
+        </tr>
+    {% for object in object_list %}
+        <tr>
+            <td>{{object.id}}</td>
+            <td><a href={%url "board:detail" object.pk%}>{{object.title}}</a></td>
+            <td>{{object.writer}}</td>
+            <td>{{object.content}}</td>
+            <td><a href="" download>{{object.file}}</a></td>
+            <td>{{object.regdate}}</td>
+            <td>{{object.read_count}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>게시물이 존재하지 않습니다.</p>    
+{% endif %}
+<a href={%url "board:create" %}><button>글쓰기</button></a>
+{% endblock content %}

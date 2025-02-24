@@ -11,3 +11,8 @@ class Board(models.Model):
     
     def __str__(self):
         return f"Board[id={self.id}, title={self.title}]"
+    
+    def increase_read_count(self):
+        self.read_count +=1
+        self.save()
+        

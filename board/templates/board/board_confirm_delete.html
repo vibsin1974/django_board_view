@@ -1,0 +1,13 @@
+{% extends 'board/base.html' %}
+{% block title %}글삭제{% endblock title %}
+{% block content %}
+    <form method ="post">
+        {% csrf_token %}
+        {{object.title}}를 정말 삭제하시겠습니까?
+        <button type="submit">네</button>
+        <a href={%url "board:detail" object.id%}><button type="button">취소</button></a>
+    </form>
+
+{% endblock content %}
+
+
