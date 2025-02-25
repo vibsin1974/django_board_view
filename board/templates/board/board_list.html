@@ -1,6 +1,18 @@
 {% extends 'board/base.html' %}
 {% block title %}글목록{% endblock title %}
 {% block content %}
+
+<form action={%url "board:search" %}>
+    {{searchform}} 
+    <button type="submit">검색</button>
+</form>
+
+{% if searchcount %}
+    <p>검색결과:{{searchcount}}개 찾음
+    <a href={%url "board:list" %}>[[목록으로]]</a>
+    </p>
+{% endif %}
+
 {% if object_list %}
     <table border="1">
         <tr>
@@ -27,5 +39,25 @@
 {% else %}
     <p>게시물이 존재하지 않습니다.</p>    
 {% endif %}
+<hr>
+{% if is_paginated %}
+    {% if  page_obj.has_previous%}
+        <a href=?page={{page_obj.previous_page_number}}&keyword={{keyword}} >이전</a>
+
+    {% endif %}
+    {% for i in paginator.page_range %}
+        {% if i == page_obj.number %}
+            <span style= "color:red;">[{{i}}]</span>
+        {% elif i > page_obj.number|add:"-2" and i <  page_obj.number|add:"2" %}
+            <a href="?page={{i}}&keyword={{keyword}}">[{{i}}]</a>
+        {% endif %}
+    {% endfor %} 
+
+    {% if  page_obj.has_next%}
+        <a href=?page={{page_obj.next_page_number}}&keyword={{keyword}}>이후</a>
+    {% endif %}
+
+{% endif %} 
+<br>
 <a href={%url "board:create" %}><button>글쓰기</button></a>
 {% endblock content %}

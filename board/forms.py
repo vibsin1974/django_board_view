@@ -11,3 +11,6 @@ class modelform(forms.ModelForm):
                 "content":"내용",
                 "file":"파일"
         }
+        
+class searchform(forms.Form):
+    keyword = forms.CharField(label ="키워드",max_length=20)
